@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if cat_list == None %}
+<h2 style="margin:50px">There is no post yets. Please stay tune to keep yourself update.</h2>
+{% endif %}
+{#{% for obj in cat_list %}#}
+{#    <p>{{ obj.title }}</p>#}
+{#{% endfor %}#}
+{#    #}
+{#    #}
+    <section class="featured-posts no-padding-top">
+      <div class="container">
+        <!-- Post-->
+        {% for obj in cat_list %}
+        <div class="row d-flex align-items-stretch">
+          {% if not forloop.counter|divisibleby:2  %}
+          <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
+          {% endif %}
+          <div class="text col-lg-7">
+            <div class="text-inner d-flex align-items-center">
+              <div class="content">
+                <header class="post-header">
+                  <div class="category">
+                    {% for cat in obj.categories.all %}
+                    <a href="#">{{ cat }}</a>
+                    {% endfor %}
+                  </div>
+                  <a href="{{ obj.get_absolute_url }}">
+                    <h2 class="h4">{{ obj.title }}</h2>
+                    </a>
+                </header>
+                <p>{{ obj.overview|linebreaks|truncatechars:200 }}</p>
+                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    <div class="avatar"><img src="{{ obj.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{ obj.author }}</span></div></a>
+                  <div class="date"><i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
+                  <div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
+                </footer>
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:2  %}
+          <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,2333 @@
+{% load static %}
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0  minimum-scale=1, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{% static 'pro_css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'pro_css/work.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'pro_css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'pro_css/swiper.min.css' %}" />
+    <link
+      href="{% static 'booklet/jquery.booklet.latest.css' %}"
+      type="text/css"
+      rel="stylesheet"
+      media="screen, projection, tv,mobile"
+    />
+
+      {#   coming from head.html #}
+     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontastic.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <link rel="stylesheet" href="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+
+      {#      end of head.html#}
+    <link rel="stylesheet" href="{% static 'pro_css/testimonial.css' %}" />
+    <link rel="stylesheet" href="{% static 'pro_css/progress.css' %}" />
+    <link rel="stylesheet" href="{% static 'pro_css/main.css' %}" />
+
+  </head>
+  <body>
+    <!-- ######## Start Header Area -->
+    <header class="header">
+      <!-- Main Navbar-->
+      <nav class="navbar navbar-expand-lg">
+
+        <div class="container">
+          <!-- Navbar Brand -->
+          <div class="navbar-header d-flex align-items-center justify-content-between">
+            <!-- Navbar Brand --><a href="/" class="navbar-brand">Lets Learn Together</a>
+            <!-- Toggle Button-->
+            <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+          </div>
+          <!-- Navbar Menu -->
+          <div id="navbarcollapse" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a href="/" class="nav-link ">Home</a>
+              </li>
+              <li class="nav-item"><a href="/blog" class="nav-link active ">Blog</a>
+              </li>
+
+            <li class="nav-item"><a href="{% url 'portfolio' %}" class="nav-link ">Portfolio</a>
+              </li>
+              <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a>
+              </li>
+              {% if request.user.is_superuser %}
+              <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
+              </li>
+               <li class="nav-item"><a href="/message" class="nav-link ">Message</a>
+              </li>
+              <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link ">Logout</a>
+              </li>
+            {% elif not user.is_active %}
+{#            {% if user.is_authenticated %}#}
+              <li class="nav-item"><a href="{% url 'login' %}" class="nav-link ">Login</a>
+              </li>
+              <li class="nav-item"><a href="{% url 'register' %}" class="nav-link ">Register</a>
+              </li>
+              {% else %}
+                  <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link ">Logout</a>
+              </li>
+
+              {% endif %}
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ######## End Header Area -->
+
+    <!-- ###### Start Main Area ########  -->
+    <main class="site-main">
+      <!-- ###################### Start Banner Area ########### -->
+      <section class="site-banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 site-title">
+              <h3 class="title-text">Hey</h3>
+              <h1 class="title-text text-uppercase">I am Debashis Gupta</h1>
+              <h4 class="title-text text-uppercase">
+                A Data Scientist and Full Stack Developer
+              </h4>
+              <div class="site-buttons">
+                <div class="d-flex flex-row flex-wrap">
+                  <button
+                    type="button"
+                    class="btn button primary-button mr-4 text-uppercase"
+                  >
+                    hire me
+                  </button>
+                  <button
+                    type="button"
+                    class="btn button secondary-button text-uppercase"
+                  >
+                    Get cv
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 banner-image">
+              <img
+                src="{% static 'pro_img/own/proOne.jpg' %}"
+                alt=""
+                class="img-fulid phone_image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ###################### End Banner Area ########### -->
+      <!-- ###################### About Area ########### -->
+
+      <section class="about-area"  data-aos="slide-up">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 ">
+              <div class="about-image">
+                <img
+                  src="{% static 'pro_img/own/proTwo.jpg' %}"
+                  width="100%"
+                  alt="About Us"
+                  class="img-fluid phone_image"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 about-title ">
+              <h2 class="text-uppercase pt-5">
+                <span>Let me</span>
+                <span>Introduce</span>
+                <span>myself</span>
+              </h2>
+              <div class="paragraph py-4 w-75">
+                <p class="para">
+                  An avid learner who is working in the fields of data science
+                  and web development. Accustomed to working with a team to
+                  complete a given task and also capable to do as an individual.
+                  I am a person who possesses adequate level of
+                  <strong>leadership,management and communication</strong>
+                  qualities and wants to work in the vast research field of
+                  technology. Currently an undergrad persuing a bachelor's
+                  degree in computer science and engineering who loves to learn
+                  new tech stuffs and to be up to date with the trends.
+                </p>
+                <p class="para">
+                  My <strong>ethics</strong> of life are
+                  <strong
+                    >"Keep confidence in myself and only then with God, I can
+                    turn every impossible to be possible."</strong
+                  >
+                  and the second one
+                  <strong
+                    >"Ready to take any challenge no matter i win or loss it
+                    every challenge comes with a new lesson."</strong
+                  >
+                </p>
+              </div>
+              <button
+                type="button"
+                class="btn button primary-button text-uppercase"
+              >
+                <a href="https://google.com" target="_blank">Download CV</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ###################### End About Area ########### -->
+
+      <!--Academic Life -->
+      <div class="timeline-container" id="timeline-1"  data-aos="zoom-in">
+        <div class="timeline-header">
+          <h2 class="timeline-header__title">Academic Life</h2>
+          <h3 class="timeline-header__subtitle">Knowledge Is Power</h3>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item" data-text="Secondary School">
+            <div class="timeline__content">
+              <img class="timeline__img" src="{% static 'pro_img/own/sujapur.jpg' %}" />
+              <h2 class="timeline__content-title">2008-2012</h2>
+              <p class="timeline__content-desc">
+                My Secondary School was Sujapur Model High School. It is
+                sitauted at Phulbari thana under Dinajpur district. I passed my
+                Secondary School with
+                <strong style="color: #f2abc2;"
+                  >GPA 5.00 (on scale of 5.00)</strong
+                >. I still rememberred my those glorious days at school.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" data-text="Higher Secondary School">
+            <div class="timeline__content">
+              <img class="timeline__img" src="{% static 'pro_img/own/college.jpg' %}" />
+              <h2 class="timeline__content-title">2013-2015</h2>
+              <p class="timeline__content-desc">
+                Cantonment Public School and College,Momenshahi was my Higher
+                Secondary School. This institution filled my life with
+                discipline and punctuality. I got my Higher Secondary School
+                Certificate with
+                <strong style="color: #f2abc2;"
+                  >GPA 5.00 (on scale of 5.00)</strong
+                >. I owe a lot to this renowned institution.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" data-text="University">
+            <div class="timeline__content">
+              <img class="timeline__img" src="{% static 'pro_img/own/ruet.jpg' %}" />
+              <h2 class="timeline__content-title">2016-PRESENT</h2>
+              <p class="timeline__content-desc">
+                Rajshahi University of Engineering and Technology shortly known
+                as <strong style="color: cornflowerblue;">RUET</strong> is the
+                most prestigious government University where i got chance to
+                complete my graduation under department of
+                <strong>Computer Science and Engineering</strong>. Currently i
+                am at my final semester with a handsome
+                <strong style="color: #f2abc2;"
+                  >CGPA 3.59 (on scale of 4.00)</strong
+                >. I will be always thankful to our lecturers and professors for
+                teaching me fabulously.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Academic Life -->
+      <!-- work experience -->
+      <div class='divider'></div>
+      <section style="filter: hue-rotate(48deg);background:linear-gradient(45deg, #EDFBCE, #EDFBCE,#EDFBCE, #EDFBCE);" data-aos="fade-left">
+        <div class="work">
+          <div class="work_title">
+            <h1>Work Experience</h1>
+
+            <p class="work_desc">
+
+              During my <strong>academic period</strong> for my work experience i acted as an <strong>instructor <br> for web development course at  Inovative Society Of RUET (ISR)</strong>
+             <br> Here I used to take classes of the students of RUET on <strong> CSS and JAVASCRIPT</strong>.
+              <br>
+              Apart from this i did an internship under BDfinance company Dhaka. <br>
+               There i was working to <strong>develop a software on automatic</strong> the loan <br> acquisition form which was manually handled.
+              <br>
+            </p>
+            <div class="leaves1"></div>
+            <div class="leaves2"></div>
+
+          </div>
+        </div>
+      </section>
+      <!-- end of work experience -->
+
+      <!-- professional skill -->
+      <div class="divider"></div>
+      <section data-aos="zoom-in">
+        <div class="text-center">
+          <h2 class="timeline-header__title" style="color: black;">
+            Professional Skill
+          </h2>
+          <h3 class="timeline-header__subtitle" style="color: black;">
+            True skill doesn't make you an arogant rather makes you more modest
+          </h3>
+        </div>
+
+        <div class="divider"></div>
+        <div id="mybook">
+          <div class="mobile_version_skill test">
+            <h3 style="font-size: 13px;color: firebrick;">Lets Start With My Belief</h3>
+            <div class="test-image">
+              <img src="{% static 'pro_img/skill/start2.jpg' %}" class="fixed_image" alt="" />
+            </div>
+          </div>
+          <div class="mobile_version_skill test" rel="Web Development">
+            <h3>Web Development</h3>
+            <div class="test-image">
+              <img src="{% static 'pro_img/skill/WebDevlopment.png' %}" alt="" />
+            </div>
+          </div>
+
+          <div class="title-skills">
+            <div class="bar">
+              <div class="skill">HTML5 / CSS & FrameWork</div>
+              <div class="bar-outer">
+                <div class="bar-inner ht" data-attr="90"></div>
+              </div>
+            </div>
+
+            <div class="bar">
+              <div class="skill">JQuery</div>
+              <div class="bar-outer">
+                <div class="bar-inner jq" data-attr="85"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">JAVASCRIPT</div>
+              <div class="bar-outer">
+                <div class="bar-inner js" data-attr="90"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Php / Laravel / Wordpress</div>
+              <div class="bar-outer">
+                <div class="bar-inner ph" data-attr="84"></div>
+              </div>
+            </div>
+
+            <div class="bar">
+              <div class="skill">Flask</div>
+              <div class="bar-outer">
+                <div class="bar-inner fl" data-attr="90"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Django</div>
+              <div class="bar-outer">
+                <div class="bar-inner dj" data-attr="94"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">MySql / Postgresql / SQlite</div>
+              <div class="bar-outer">
+                <div class="bar-inner cs" data-attr="90"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Ngnix [Learning Phase]</div>
+              <div class="bar-outer">
+                <div class="bar-inner lar" data-attr="65"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Unit Testing</div>
+              <div class="bar-outer">
+                <div class="bar-inner ut" data-attr="80"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Pentration testing</div>
+              <div class="bar-outer">
+                <div class="bar-inner pt" data-attr="83"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile_version_skill test" rel="Machine Learning">
+            <h3 style="font-size: 1rem;">Machine Learning / Data Science</h3>
+            <div class="test-image">
+              <img src="{% static 'pro_img/skill/ml.jpeg' %}" alt="" />
+            </div>
+          </div>
+          <div class="title-skills">
+            <div class="bar">
+              <div class="skill" style="margin-top: 26vh;">Tensorflow / Keras</div>
+              <div class="bar-outer">
+                <div class="bar-inner tk" data-attr="85"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Pytorch</div>
+              <div class="bar-outer">
+                <div class="bar-inner tr" data-attr="80"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Basic Algorithm</div>
+              <div class="bar-outer">
+                <div class="bar-inner ba" data-attr="90"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Advance Algorithm</div>
+              <div class="bar-outer">
+                <div class="bar-inner aa" data-attr="87"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile_version_skill test" rel="Programming Language & OS">
+            <h3 class='fixed_font'>Programming Language & OS</h3>
+            <div class="test-image">
+              <img src="{% static 'pro_img/skill/pl2.jpeg' %}" alt="" />
+            </div>
+          </div>
+          <div class="title-skills">
+            <div class="bar">
+              <div class="skill" style="margin-top: 26vh;">Python [Preferable]</div>
+              <div class="bar-outer">
+                <div class="bar-inner py" data-attr="92"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">C / C ++</div>
+              <div class="bar-outer">
+                <div class="bar-inner cpp" data-attr="80"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Spark / Big Data / Pyspark</div>
+              <div class="bar-outer">
+                <div class="bar-inner bd" data-attr="75"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Linux [preferable]</div>
+              <div class="bar-outer">
+                <div class="bar-inner lin" data-attr="90"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill">Windows</div>
+              <div class="bar-outer">
+                <div class="bar-inner win" data-attr="85"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mobile_version_skill test" rel="MISCELLANEOUS">
+            <h3 class='fixed_font'>MISCELLANEOUS</h3>
+            <div class="test-image">
+              <img class="fixed_image" src="{% static 'pro_img/skill/misi.jpg' %}"alt="" />
+            </div>
+          </div>
+          <div class="title-skills">
+            <div class="bar">
+              <div class="skill" style="margin-top: 26vh;letter-spacing: 3px;"> Git/Github</div>
+              <div class="bar-outer">
+                <div class="bar-inner git" data-attr="88"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill" style="letter-spacing: 3px;"> Google Doc / libreoffice writer /microsoft word</div>
+              <div class="bar-outer">
+                <div class="bar-inner gd" data-attr="95"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill" style="letter-spacing: 3px;"> Google Slide / libreoffice impress /microsoft powerpoint</div>
+              <div class="bar-outer">
+                <div class="bar-inner gs" data-attr="93"></div>
+              </div>
+            </div>
+            <div class="bar">
+              <div class="skill" style="letter-spacing: 3px;">Google spreadsheet / libreoffice calc /microsoft excel</div>
+              <div class="bar-outer">
+                <div class="bar-inner gsp" data-attr="95"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile_version_skill test">
+            <h3 style="font-size: 0.6rem;color:black;letter-spacing: 8px;font-weight: bold;">A Little Trust Can Make Big Change</h3>
+            <div class="test-image ">
+              <img class="fixed_height" src="{% static 'pro_img/skill/bye.jpg' %}" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- professional skill -->
+
+      <!-- achievement start -->
+      <div class="divider"></div>
+      <section data-aos="flip-right">
+      <div class="text-center">
+        <h2 class="timeline-header__title" style="color: black;">
+          Achievement
+        </h2>
+        <h3 class="timeline-header__subtitle" style="color: black;">
+          True skill doesn't make you an arogant rather makes you more modest
+        </h3>
+      </div>
+      <div class="divider"></div>
+      <section class="blur-achieve">
+        <div class="box-card">
+          <div
+            class="card mb-3 box-border"
+            style="max-width: 600px; margin-top: 15px;"
+          >
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <a
+                  href="https://drive.google.com/file/d/1Oi20iaE9965UNMoKQi-yXfl9THj-VRL7/view"
+                  target="_blank"
+                >
+                  <img
+                    src="pro_img/own/itee.PNG"
+                    height="100%"
+                    width="100%"
+                    alt="logo"
+                  />
+                </a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title box-header__title">ITEE EXAM</h5>
+                  <p class="card-text">
+                    I <strong> ranked 14<sup>th</sup> </strong> from Bangladesh
+                    on this exam.
+                  </p>
+                  <p>
+                    ITEE stands for Information Technology Engineers
+                    Examination.This is the national level IT Enginners
+                    Examination governed by <strong>IPA,Japan</strong>
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Examination Year : 2019</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3 box-border" style="max-width: 600px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <a
+                  href="https://drive.google.com/file/d/1D4mqmnNm9XuE4Ywo0RCxCxYnRtnPzaJk/view"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'pro_img/own/network.jpg' %}"
+                    height="250px%"
+                    width="100%"
+                    alt=""
+                    style="visibility: visible;"
+                  />
+                </a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title box-header__title">
+                    Practical Cryptography
+                  </h5>
+                  <p class="card-text">
+                    I <strong> stood 1<sup>st</sup></strong> from Bangladesh and
+                    <strong>rannked 3<sup>rd</sup></strong> among the countries
+                    - Bangladesh Srilanka Philipines Nepal Bhutan.
+                  </p>
+                  <p>
+                    The theortical and practical session and test on<mark
+                      >applied Cryptography</mark
+                    >
+                    was held by
+                    <strong
+                      >BdREN (Bangladesh Research & Education Network)
+                    </strong>
+                    also supervised by <strong>Asi@Connect,EU</strong>
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Examination Year : 2020</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3 box-border" style="max-width: 600px;">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-md-4">
+                <img
+                  src="{% static 'pro_img/own/hult_prize.jpg' %}"
+                  height="100%"
+                  width="100%"
+                  alt=""
+                />
+              </div>
+              <div class="col-lg-8 col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title box-header__title">Hult Prize</h5>
+                  <p class="card-text">
+                    Here I played the team coordinator role and we acquired
+                    position 6 <sup>th</sup> in the competition
+                  </p>
+                  <p>
+                    The Hult Prize was established by Bertil Hult, and is an
+                    annual, year-long competition that crowd-sources ideas from
+                    students after challenging them to solve a pressing social
+                    issue
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Participation Year : 2018</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 box-border" style="max-width: 600px;">
+            <div class="row no-gutters">
+              <div class="col-lg-4 col-md-4">
+                <img
+                  src="{% static 'pro_img/own/medal.png' %}"
+                  height="100%"
+                  width="100%"
+                  alt=""
+                />
+              </div>
+              <div class="col-lg-8 col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title box-header__title">BUET EEE Day</h5>
+                  <p class="card-text">
+                    This was about a prototype presentation where i got
+                    <strong>Honoured Award</strong>
+                  </p>
+                  <p>
+                    The prototype was on automatic toll system. In our country
+                    the toll system is manually operated and so its hard to
+                    maintain. For this reason the purpose of this prototype was
+                    made the whole system digitalize with each transport car
+                    having PIN number connected to their bank account to pay the
+                    money.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Participation Year : 2016</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+      <!-- achievement end -->
+      <div class="divider"></div>
+      <!-- certification start -->
+      <section data-aos="zoom-in">
+      <div class="text-center">
+        <h2 class="timeline-header__title" style="color: black;">
+          Certification
+        </h2>
+        <h3 class="timeline-header__subtitle" style="color: black;">
+          Certificate can't alone prove one's expertise rather his will can
+        </h3>
+      </div>
+      <div class="divider"></div>
+      <section class="course_body">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy red">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization</span>
+                        <span>University of Michigan</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructor</span>
+                        <span>Charles Russell Severance</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">99%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">7</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">7</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/Y7MVGJXQAWWT" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Programming for Everybody</h1>
+                    <p>
+                      This course was conducted on Python. Here the instructor teaches about python
+                      basic and give concepts on core knowledge how to work with python. It is also instructed about the intermediatory usage of python in programming section
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy green">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization Name</span>
+                        <span>IBM</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructed By</span>
+                        <span>IBM</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">94%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">7</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">7</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/ER94GR6F3HUU" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Data Analysis With Python</h1>
+                    <p>
+                     This course was conducted by IBM. The instructor taught how to analysis a dataset and visualize it with the help of python.
+                     Different types of method are shown for make perfect usage of pandas and numpy in order to get concept and features of dataset.
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy blue">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization Name</span>
+                        <span>deeplearning.ai</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructed By</span>
+                        <span>Dr Andrew NG</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">98%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">5</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">5</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/TWZWZVQK7XKC" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Convolutional Neural Network</h1>
+                    <p>
+                      This course taught how to build convolutional neural networks and apply it to image data.
+                      computer vision is working far better than before, and this is
+
+                      enabling numerous exciting applications
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy blue">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization Name</span>
+                        <span>deeplearning.ai</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructed By</span>
+                        <span>Dr Andrew NG</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">92%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">4</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">4</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/D4HNUCDHBSAV" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Neural Network and Deep Learning</h1>
+                    <p>
+                      In this course the famous instructor Andrew Ng Sir taught about the basic of neural network and the core concepts of it.
+                      He instructed on shallow network. It is a part of deeplearning specialization course.
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy brown">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization Name</span>
+                        <span>deeplearning.ai</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructed By</span>
+                        <span>Dr Andrew NG</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">87%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">1</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">1</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/TDN5KWL4DRA8" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Structuring Machine Learning Projects</h1>
+                    <p>
+                      The instructor taught on how to build a successful machine learning project.
+                      To be a technical leader in AI, and know how to set direction for your team's work, this course is so effective.
+
+
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy brown">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization Name</span>
+                        <span>deeplearning.ai</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructed By</span>
+                        <span>Dr Andrew NG</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">87%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">4</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">3</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/HQ9TZDBGYX8L" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1 style="font-size: 1.7rem;">Hyperparameter tuning,Regularization & Optimization</h1>
+                    <p>
+                     This course was on basic concepts on Hyperparameter Regularization and Network Optimization. The instructor shows how to fine tune the
+                     Hyperparameter and usage of reqularizatoin and Optimization.
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy brown">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization Name</span>
+                        <span>Coursera</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructed By</span>
+                        <span>Snehan Kekre</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">100%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">1</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">1</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/E9Z4VNGNS2BK" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Anomaly Detection in Time Series Data with Keras</h1>
+                    <p>
+
+                      This was a practical project on stock market data for detecting the anomaly set with LSTM autoencoder.
+
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="cardy">
+                <div class="cardy pink">
+                  <div class="additional">
+                    <div class="user-card">
+                      <div class="center">
+                        <img
+                          src="{% static 'pro_img/own/logo.png' %}"
+                          class="img_circle"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="more-info">
+                      <h1>Debashis Gupta</h1>
+                      <div class="coords">
+                        <span>Organization</span>
+                        <span>Bdren</span>
+                      </div>
+                      <div class="coords">
+                        <span>Instructor</span>
+                        <span>Prof Dr Kasun De Zoysa</span>
+                      </div>
+                      <div class="stats">
+                        <div>
+                          <div class="title">Grades</div>
+                          <i class="fas fa-graduation-cap"></i>
+                          <div class="value">90%</div>
+                        </div>
+                        <div>
+                          <div class="title">Assignments</div>
+                          <i class="fas fa-tasks"></i>
+                          <div class="value">4</div>
+                        </div>
+                        <div>
+                          <div class="title">Quiz</div>
+                          <i class="far fa-question-circle"></i>
+                          <div class="value">1</div>
+                        </div>
+                        <div>
+                          <div class="title">Certificate</div>
+                          <img
+                            class="course_img"
+                            src="{% static 'pro_img/own/diploma.png' %}"
+                            alt=""
+                          />
+                          <div class="value">
+                            <a href="https://dle.asiaconnect.bdren.net.bd/DLE-3/certificate/fDLuDCf-DLE3-3%20Signed.pdf?fbclid=IwAR0ePNd7fVlLd-47nkrz_nk4d4bOIpDzh8yZlmOg1lmMeENcMsUirBRpD7Y" target="__blank" style="color: white;">LINK</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="general">
+                    <h1>Practical Cryptography</h1>
+                    <p>
+                      This course was provided by fDLuDCf-DLE Bdren and the course was conducted by Srilankan Instructor about different types of
+                      cryptography and applied use of these algorithms.I stood third among 5 countries.
+                    </p>
+                    <span class="more">Swipe over the card for more info</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+    </section>
+      <!-- certification end -->
+      <div class="divider"></div>
+
+      <!-- start of projects -->
+      <div class="text-center" data-aos="zoom-out">
+        <h2 class="timeline-header__title" style="color: black;">Projects</h2>
+        <h3 class="timeline-header__subtitle" style="color: black;">
+          A Little Work Can Have A Great Potential.
+        </h3>
+      </div>
+
+      <section class="project-area">
+        <div class="container" id="blur">
+          <div class="button-group" data-aos="fade-left">
+            <button type="button" class="active">All</button>
+            <button type="button" data-filter=".web">Web</button>
+            <button type="button" data-filter=".ML">Machine Learning</button>
+            <!-- <button type="button">Basic Algorithm</button> -->
+            <button type="button" data-filter=".SA">Security Attack</button>
+            <!-- <button type="button">Thesis</button> -->
+            <button type="button" data-filter=".PD">Project Demo</button>
+          </div>
+
+          <div class="row grid" data-aos="zoom-in">
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item web PD">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/covid_tracker.jpeg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">
+                    Covid-19 Tracker With Global Map Comparision
+                  </h4>
+                  <span class="text-secondary"
+                    >Web Development
+                    <a
+                      style="color: blue; cursor: pointer;"
+                      onclick="covid_tracker()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item web">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/blog.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">Lets Learn Together</h4>
+                  <span class="text-secondary"
+                    >Web Development
+                    <a style="color: blue; cursor: pointer;" onclick="blog()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item web">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/teacher.jpg' %}" alt="portfolio-2" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">School Management</h4>
+                  <span class="text-secondary"
+                    >Web Development
+                    <a style="color: blue; cursor: pointer;" onclick="school()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item web PD">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/ecomerce.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">Mina.com- A Ecomerce Site</h4>
+                  <span class="text-secondary"
+                    >Web Development
+                    <a style="color: blue; cursor: pointer;" onclick="hotel()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+              <div class="our-project">
+                <div class="img">
+                  <img src="/pro_img/work/medical.png" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">
+                    Adversarial Attack On Medical Image
+                  </h4>
+                  <span class="text-secondary"
+                    >Machine Learning
+                    <a style="color: blue; cursor: pointer;" onclick="medical()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div> -->
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/mnist.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">
+                    GAN on Hand Written Recogination
+                  </h4>
+                  <span class="text-secondary"
+                    >Machine Learning
+                    <a style="color: blue; cursor: pointer;" onclick="mnist()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/covid.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">
+                    Comparision on Classifing Covid-19 of Different Pretrained
+                    models
+                  </h4>
+                  <span class="text-secondary"
+                    >Machine Learning
+                    <a style="color: blue; cursor: pointer;" onclick="covid()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/chest.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">Classifing Chest X-ray Image</h4>
+                  <span class="text-secondary"
+                    >Machine Learning
+                    <a style="color: blue; cursor: pointer;" onclick="chest()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+              <div class="our-project">
+                <div class="img">
+                  <img src="/pro_img/work/diabetic.jpg" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">Diabetic Prediction</h4>
+                  <span class="text-secondary"
+                    >Machine Learning
+                    <a
+                      style="color: blue; cursor: pointer;"
+                      onclick="diabetic()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/card.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">Credit Card Fraud Detection</h4>
+                  <span class="text-secondary"
+                    >Machine Learning
+                    <a style="color: blue; cursor: pointer;" onclick="card()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item SA">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/dos.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">Denial Of Service</h4>
+                  <span class="text-secondary"
+                    >Security Attack
+                    <a style="color: blue; cursor: pointer;" onclick="dos()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 element-item SA">
+              <div class="our-project">
+                <div class="img">
+                  <img src="{% static 'pro_img/work/keylogger.jpg' %}" alt="portfolio-1" />
+                </div>
+                <div class="title py-4">
+                  <h4 class="text-uppercase">KeyLogger Attack</h4>
+                  <span class="text-secondary"
+                    >Security Attack
+                    <a style="color: blue; cursor: pointer;" onclick="key()"
+                      >Description</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="covid_tracker">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                COVID-19 Tracker
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                United We Can Face A Great Disaster With A Little Smile.
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>
+                Click on
+                <a
+                  href="https://github.com/Debashis-Gupta/debashis-covid-19"
+                  target="_blank"
+                  >Github Link</a
+                >
+              </p>
+              <p>
+                Click on
+                <a
+                  href="http://debashis-covid-19.000webhostapp.com/"
+                  target="_blank"
+                  >Project Demo</a
+                >
+              </p>
+            </div>
+            <div class="pop-body">
+              <p>
+                Covid-19 is the most fatal disease in 21<sup>st</sup> century
+                and is declared as <strong>Global pandemic by WHO</strong>. The
+                only cure of this deadly disease is to maintain social distance
+                and keeping hygenic environment.
+              </p>
+              <p>
+                I made this web app to track the covid-19 disease affected on
+                globally. Here i use Javascript to call api and processed the
+                data with fetch method. Here i introduced
+                <strong>some key features</strong> described briefly following.
+              </p>
+              <ul>
+                <li style="list-style: inside;">
+                  <strong
+                    >Automatic detect one's country and show the result</strong
+                  >. You can change it by clicking the change button. [ You can
+                  use VPN to see the feature working. ]
+                </li>
+                <li style="list-style: inside;">
+                  You can see the <strong>global map</strong> which states have
+                  been how much affected with statistics.
+                </li>
+                <li style="list-style: inside;">
+                  You can make
+                  <strong>comparison between any two countries</strong> and see
+                  the comparison statistics with chart.
+                </li>
+                <li style="list-style: inside;">
+                  <strong>Stastical View</strong>
+                </li>
+                <li style="list-style: inside;">
+                  Friendly <strong>User Interface</strong> (UI)
+                </li>
+              </ul>
+              <p>
+                Here I act as <strong> Project Planner </strong> and want to
+                <strong>contribute to the society.</strong>
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button
+                class="btn btn-light fa-pull-right"
+                onclick="covid_tracker()"
+              >
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="blog">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Lets Learn Together
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                A Blog For Spreading Knowledge.
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="#">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                Lets Learn Together is my personal blog where i try to share my
+                knowledge and experience to avid learners who want to do
+                something by themselves. As i'm very much keen to know new
+                technology and techniques i think about this blog to make usable
+                for all.
+              </p>
+              <p>
+                As it can be already identified i am
+                <strong>the owner and do all the stuffs by myself</strong> i
+                like to reveal some <strong>key features</strong> of the blog -
+              </p>
+              <ul>
+                <li style="list-style: inside;">
+                  To make comment <strong>login</strong> must be needed
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Email Verification
+                </li>
+                <li style="list-style: inside;">
+                  Users Can <strong>Subscribe to NewsLetter</strong> to notify
+                  to the new posts
+                </li>
+                <li style="list-style: inside;">
+                  Have all users details
+                  <strong>secured and structured way</strong>
+                </li>
+                <li style="list-style: inside;">
+                  <strong>Category</strong> to all posts
+                </li>
+              </ul>
+              <p>Here I act as <strong> Blogger, DBA and Planner</strong></p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="blog()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="school">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                BMMRI
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Pursue Knowledge & Serve Mankind
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>
+                Click on
+                <a
+                  href="https://github.com/Debashis-Gupta/school_management"
+                  target="_blank"
+                  >Github Link</a
+                >
+              </p>
+            </div>
+            <div class="pop-body">
+              <p>
+                Currently I am working on this project for a school. I like to
+                reveal some of its features like -
+              </p>
+              <ul>
+                <li style="list-style: inside;">Online Admission Portal</li>
+                <li style="list-style: inside;">
+                  Managing Each Student Individual Data and Result
+                </li>
+                <li style="list-style: inside;">
+                  Building Front-end Design for the school
+                </li>
+              </ul>
+              <p>
+                Here I work as
+                <strong>Team Leader Planner and Database Designer</strong>
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="school()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="hotel">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2
+                class="timeline-header__title"
+                style="color: black; font-size: 40px;"
+              >
+                Mina.com- A Ecomerce Webstie
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Online Platform Brings TO Life More Ease
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>
+                Click on
+                <a
+                  href="https://github.com/Debashis-Gupta/Debashis-Gupta.github.io"
+                  target="_blank"
+                  >Github Link</a
+                >
+              </p>
+              <p>
+                Click on
+                <a href="https://debashis-gupta.github.io/" target="_blank"
+                  >Project Demo</a
+                >
+              </p>
+            </div>
+            <div class="pop-body">
+              <p>
+                This is an ecomerce template which i built on my
+                <strong> first semester</strong>. It was my first project as a
+                front-end designer in my career.Here I use
+                <strong>only html css and Javascript.</strong>
+              </p>
+              <p>
+                I like to point out some <strong>features</strong> of this
+                project -
+              </p>
+              <ul>
+                <li style="list-style: inside;">
+                  Provided <strong>Image Slider using Javascript</strong>
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Gallery View
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Custom Advertisement
+                </li>
+              </ul>
+              <p>
+                I keep this project as it is
+                <strong>without any improvisement</strong> because i like to
+                <strong>see my beginning over and over again</strong>. I hope
+                you like the <strong>demo</strong> and
+                <strong>see it as a new-bie web developer</strong>
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="hotel()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="card">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Credit Card Fraud Detection
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Technology Can Be Curse When It Is Being Abused
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="https://github.com/Debashis-Gupta/-Credit_card_fraud_detection" target="__blank">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+               It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are
+                not charged for items that they did not purchase.So I tried on credit card fraud detection dataset from kaggle to detect the
+                fraud cases. It is basically a categorical implementation to detect <strong>normal and fraud transactions.</strong>
+              </p>
+              <p>
+               Here I implemented three algorithms <strong>IsolationForest, LocalOutlierFactor, Randomforest and Artificial Neural Network (ANN).</strong>
+               The highlighted remarks of this project is -
+              </p>
+              <ul>
+                <li style="list-style: inside;">
+                  <strong>Comparision</strong> between static algorithms and neural network architectural algorithms.
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  ANN performs better than IsolationForest and Randomforest.
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Dataset Analysis
+                </li>
+              </ul>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="card()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="diabetic">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Diabetic Prediction
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                A Disease Can't Stop One's Life
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="#">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                This was about classfication the given data whether the patient
+                has diabetic or not. Here I used
+                <strong>"PIMA Diabetic Dataset"</strong>.
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="diabetic()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="covid">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Classifing Covid-19
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Machine Can Enlarge A Doctor's Ability
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="https://github.com/Debashis-Gupta/Debashis-Gupta-COMPARISION-ON-CLASSIFING-COVID-19-OF-DIFFERENT-PRETRAINED-MODELS/blob/master/identify-covid-19-with-inceptionv3-and-vgg16.ipynb" target="__blank">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                It's a <strong>binary classfication model</strong> defining
+                whether the given chest x-ray image is normal or affected by
+                <strong>Covid-19</strong>. Here I show different types of pretrained model like Vgg16, InceptionV3 , RestNet, DenseNet.
+              </p>
+              <p>Some <strong>key points</strong> of this model are -</p>
+              <ul>
+                <li style="list-style: inside; font-weight: bold;">
+                  Can compare the stability among these models
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Dataset Analysis
+                </li>
+                <li style="list-style: inside;">
+                  <strong>Provide Customization</strong> to these models
+                </li>
+
+              </ul>
+              <p>
+                Here I learn dealing with
+                <strong>less dataset and inner-differ architectural behaviour of different models</strong>.
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="covid()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="chest">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Classifing Chest X-ray Image
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Machine Can Enlarge A Doctor's Ability
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="#">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                It's a <strong>binary classfication model</strong> defining
+                whether the given chest x-ray image is normal or affected by
+                <strong>Pneumonia</strong>. I use a pretrained model to train up
+                the whole image dataset.
+              </p>
+              <p>Some <strong>key points</strong> of this model are -</p>
+              <ul>
+                <li style="list-style: inside; font-weight: bold;">
+                  Got accuracy - 96%
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Data Augmentation - Image generator
+                </li>
+                <li style="list-style: inside;">
+                  <strong>Provide Customization</strong> Vgg16 model
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  Normalization
+                </li>
+              </ul>
+              <p>
+                Here I learn dealing with
+                <strong>less dataset and image augementaion</strong>. Besides
+                how to <strong>customly define a pretrained model</strong>.
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="chest()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="medical">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Adversarial Attack On Medical Image
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Machine Can Enlarge A Doctor's Ability
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="#">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+                tempora quae eaque aliquam animi quam, doloribus voluptatibus
+                nesciunt? Optio, sint.
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+                tempora quae eaque aliquam animi quam, doloribus voluptatibus
+                nesciunt? Optio, sint.
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="medical()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="mnist">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Adversarial Attack On mnist Image
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Machine Can Enlarge A Doctor's Ability
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="#">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+                tempora quae eaque aliquam animi quam, doloribus voluptatibus
+                nesciunt? Optio, sint.
+              </p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+                tempora quae eaque aliquam animi quam, doloribus voluptatibus
+                nesciunt? Optio, sint.
+              </p>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="mnist()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="dos">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                Denial Of Service ATTACK
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                It's the man who can make use or abuse of internet
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="#">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                As i am very much curious to learn and aware of network threats
+                and security, so i like coding new stuffs gaining knowledge from
+                different sources .I made this attack using python version 3.7.
+              </p>
+              <p>The key points i like to share of my project are -</p>
+              <ul>
+                <li style="list-style: inside;">
+                  Custom input to the target server IP
+                </li>
+                <li style="list-style: inside;">
+                  Customize the sending packets and timings
+                </li>
+              </ul>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="dos()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 popup" id="key">
+          <section class="pop scrollcss">
+            <div class="pop-header text-center">
+              <h2 class="timeline-header__title" style="color: black;">
+                KEY LOGGER ATTACK
+              </h2>
+              <h3 class="timeline-header__subtitle" style="color: black;">
+                Machine Can Enlarge A Doctor's Ability
+              </h3>
+            </div>
+            <div class="pop-link">
+              <p>Click on <a href="https://github.com/Debashis-Gupta/NetWork_Security_Attack/tree/master/KeyLogger%20Attack">Github Link</a></p>
+            </div>
+            <div class="pop-body">
+              <p>
+                A keylogger, sometimes called a keystroke logger or system monitor, is a
+                 of surveillance technology used to monitor and record each keystroke typed on a specific computer's keyboard.
+                 Intruders use keyloggers to steal <strong>personal information</strong> such  which they can then sell or use for own profit.
+              </p>
+              <p>
+               I made this keylogger attack using python script.After running it , any keystroke can be traced by the script automatically.
+               The key features of it -
+              </p>
+              <ul>
+                <li style="list-style: inside; font-weight: bold;">
+                  All keystrokes are traced and note down on a text file.
+                </li>
+                <li style="list-style: inside; font-weight: bold;">
+                  This keylogger works behind the any app automatically.
+                </li>
+
+              </ul>
+            </div>
+            <div class="pop-footer">
+              <button class="btn btn-light fa-pull-right" onclick="key()">
+                Close
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- end of projects -->
+      <!-- testimonial -->
+      <section id="testimonial-area" data-aos="slide-up">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="section-heading text-center">
+                <h2 class="timeline-header__title" style="color: black;">
+                  Well Wisher
+                </h2>
+                <h3
+                  class="timeline-header__subtitle"
+                  style="color: black; margin-bottom: 20px;"
+                >
+                  A Well Wisher Always Shows The Right Path To Walk In Life.
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="testi-wrap">
+            <div
+              class="client-single active position-1"
+              data-position="position-1"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>Arvad</h3>
+                <p>Life Handler</p>
+              </div>
+            </div>
+
+            <div
+              class="client-single inactive position-2"
+              data-position="position-2"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>ABC</h3>
+                <p>Life Conquourer</p>
+              </div>
+            </div>
+
+            <div
+              class="client-single inactive position-3"
+              data-position="position-3"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>DEF</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+
+            <div
+              class="client-single inactive position-4"
+              data-position="position-4"
+            >
+              <div class="client-img">
+                <img
+                  src="https://media.licdn.com/dms/image/C4E03AQFbvYtvSeyw-g/profile-displayphoto-shrink_100_100/0?e=1574294400&v=beta&t=49_VH9HRvqymP-VLETlFhFt4idmunZPhIQfALwaTrmA"
+                  alt=""
+                />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>HIJ</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+
+            <div
+              class="client-single inactive position-5"
+              data-position="position-5"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>KLM</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+
+            <div
+              class="client-single inactive position-6"
+              data-position="position-6"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>MNP</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+
+            <div
+              class="client-single inactive position-7"
+              data-position="position-7"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" width="40px" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>XYZ</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+            <div
+              class="client-single inactive position-7"
+              data-position="position-7"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" width="40px" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>LWX</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+            <div
+              class="client-single inactive position-7"
+              data-position="position-7"
+            >
+              <div class="client-img">
+                <img src="{% static 'pro_img/work/hotel.jpg' %}" width="40px" alt="" />
+              </div>
+              <div class="client-comment">
+                <h3>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </h3>
+                <span><i class="fa fa-quote-left"></i></span>
+              </div>
+              <div class="client-info">
+                <h3>Fuck You</h3>
+                <p>Life Proposal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class='divider'></div>
+    </main>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Jquery cdn -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script>
+      (function ($) {
+        $.fn.timeline = function () {
+          var selectors = {
+            id: $(this),
+            item: $(this).find(".timeline-item"),
+            activeClass: "timeline-item--active",
+            img: ".timeline__img",
+          };
+          selectors.item.eq(0).addClass(selectors.activeClass);
+          selectors.id.css(
+            "background-image",
+            "url(" +
+              selectors.item.first().find(selectors.img).attr("src") +
+              ")"
+          );
+          var itemLength = selectors.item.length;
+          $(window).scroll(function () {
+            var max, min;
+            var pos = $(this).scrollTop();
+            selectors.item.each(function (i) {
+              min = $(this).offset().top;
+              max = $(this).height() + $(this).offset().top;
+              var that = $(this);
+              if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
+                selectors.item.removeClass(selectors.activeClass);
+                selectors.id.css(
+                  "background-image",
+                  "url(" +
+                    selectors.item.last().find(selectors.img).attr("src") +
+                    ")"
+                );
+                selectors.item.last().addClass(selectors.activeClass);
+              } else if (pos <= max - 40 && pos >= min) {
+                selectors.id.css(
+                  "background-image",
+                  "url(" + $(this).find(selectors.img).attr("src") + ")"
+                );
+                selectors.item.removeClass(selectors.activeClass);
+                $(this).addClass(selectors.activeClass);
+              }
+            });
+          });
+        };
+      })(jQuery);
+
+      $("#timeline-1").timeline();
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(`<script src="{% static 'booklet/jquery-2.1.0.min.js' %}"><\\/script>`);
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src="{% static 'booklet/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'booklet/jquery.booklet.latest.min.js' %}"></script>
+    <script>
+      $(function () {
+        var mybook = $("#mybook").booklet();
+        $("#pause").click(function (e) {
+          e.preventDefault();
+          $("#mybook").booklet(pause);
+        });
+
+        $("#mybook").booklet({
+          keyboards: true,
+          arrows: true,
+          arrowsHide: true,
+          closed: true,
+          covers: true,
+          autoCenter: true,
+          menu: "#mybook",
+          pageSelector: true,
+          chapterSelector: true,
+          width: "83%", //75 choicable
+          height: 710,
+          auto:true,
+          delay:4000,
+        });
+      });
+    </script>
+
+    <script src="{% static 'pro_js/swiper.min.js' %}"></script>
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 45,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+
+        autoplay: {
+          delay: 3500,
+          disableOnInteraction: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+
+      });
+    </script>
+    <!-- isotope js library -->
+    <script src="{% static 'vendor/isotope/istope.min.js' %}"></script>
+    <script src="{% static 'pro_js/custom_isotope.js' %}"></script>
+    <!--end  isotope js library -->
+
+    <!-- modal js -->
+    <script src="{% static 'pro_js/testimonial.js' %}"></script>
+    <script src="{% static 'pro_js/project.js' %}"></script>
+    <script src="{% static 'pro_js/progress.js' %}"></script>
+    <!-- scroll animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset:380,
+        duration: 1400,
+      })
+    </script>
+ {% include 'footer.html' %}
+  </body>
+</html>

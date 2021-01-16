@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+    .navbar{
+        background-color: #14190A;
+    }
+    .navbar-header a{
+        color: azure;
+    }
+    </style>
+<link rel="stylesheet" href="{% static 'css/signUp.css' %}">
+<link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form method="POST" class="register-form" id="register-form">
+                          {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+{#                            <input type="text" name="name" id="name" placeholder="Your Name"/>#}
+                                {{ form.username }}
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+{#                            <input type="email" name="email" id="email" placeholder="Your Email"/>#}
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+{#                            <input type="password" name="pass" id="pass" placeholder="Password"/>#}
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+{#                            <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>#}
+                            {{ form.password2 }}
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+                        </div>
+                        {{ form.errors }}
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="{% static 'img/signUp.jpg' %}" alt="sing up image"></figure>
+                    <a href="{% url 'login' %}" class="signup-image-link">I am already member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{##}
+{#    <form action="" method="POST">#}
+{#        {% csrf_token %}#}
+{#        {{ form.username.label }}#}
+{#        {{ form.username }}#}
+{##}
+{#        {{ form.email.label }}#}
+{#        {{ form.email }}#}
+{##}
+{#        {{ form.password1.label }}#}
+{#        {{ form.password1 }}#}
+{##}
+{#        {{ form.password2.label }}#}
+{#        {{ form.password2 }}#}
+{#        <input type="submit" name="Create User">#}
+{#    </form>#}
+
+    <script>
+
+        var form_fields = document.getElementsByTagName('input');
+        form_fields[2].placeholder='Enter UserName';
+    form_fields[3].placeholder='Enter Email';
+    form_fields[4].placeholder='Enter Password';
+    form_fields[5].placeholder='Re-enter Password';
+
+
+    </script>
+
+
+{% endblock content %}
