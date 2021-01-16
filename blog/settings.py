@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^fb*5=*$p5%$_v$*g!_+7zn=n570qtcgox7@-3wv(n6a#8*-^q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','406912e8e9c9.ngrok.io','843533028623.ngrok.io','192.168.0.104']
+ALLOWED_HOSTS = ['lets-learn-together.herokuapp.com','127.0.0.1']
 
 
 # Application definition
